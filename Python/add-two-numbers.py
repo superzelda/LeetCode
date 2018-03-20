@@ -1,7 +1,7 @@
 # Time:  O(n)
 # Space: O(1)
 #
-# You are given two linked lists representing two non-negative numbers. 
+# You are given two linked lists representing two non-negative numbers.
 # The digits are stored in reverse order and each of their nodes contain a single digit.
 # Add the two numbers and return it as a linked list.
 #
@@ -14,6 +14,27 @@ class ListNode:
         self.val = x
         self.next = None
 
+class Solution3(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        """
+        dummy = tmp = ListNode(0)
+        carry = 0
+        while l1 or l2 or carry:
+            a, b = 0, 0
+            if l1:
+                a = l1.val
+                l1 = l1.next
+            if l2:
+                b = l2.val
+                l2 = l2.next
+            su = a + b + carry
+            tmp.next = ListNode(su%10)
+            carry = su//10
+            tmp = tmp.next
+        return dummy.next
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
         """
@@ -46,4 +67,4 @@ if __name__ == '__main__':
     b, b.next, b.next.next = ListNode(5), ListNode(6), ListNode(4)
     result = Solution().addTwoNumbers(a, b)
     print "{0} -> {1} -> {2}".format(result.val, result.next.val, result.next.next.val)
-        
+
