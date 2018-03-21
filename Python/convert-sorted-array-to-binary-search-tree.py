@@ -11,6 +11,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+<<<<<<< HEAD
 class Solution:
     # @param num, a list of integers
     # @return a tree node
@@ -19,6 +20,27 @@ class Solution:
 
     @staticmethod
     def perfect_tree_pivot(n):
+=======
+
+class Solution(object):
+    def sortedArrayToBST(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        return self.sortedArrayToBSTRecu(nums, 0, len(nums))
+
+    def sortedArrayToBSTRecu(self, nums, start, end):
+        if start == end:
+            return None
+        mid = start + self.perfect_tree_pivot(end - start)
+        node = TreeNode(nums[mid])
+        node.left = self.sortedArrayToBSTRecu(nums, start, mid)
+        node.right = self.sortedArrayToBSTRecu(nums, mid + 1, end)
+        return node
+    
+    def perfect_tree_pivot(self, n):
+>>>>>>> 8de51358e24ee1a680dbad1fedff8b9fec09ad5b
         """
         Find the point to partition n keys for a perfect binary search tree
         """
@@ -33,6 +55,7 @@ class Solution:
         else:
             return n - x // 2  # case 2 == n - (x//2 - 1) - 1 : the left subtree of the root
                                # has more nodes and the right subtree is perfect.
+<<<<<<< HEAD
 
     def sortedArrayToBSTRecu(self, num, start, end):
         if start == end:
@@ -65,6 +88,10 @@ class Solution3:
         root.right = self.sortedArrayToBST(nums[mid+1:])
         return root
 
+=======
+    
+    
+>>>>>>> 8de51358e24ee1a680dbad1fedff8b9fec09ad5b
 if __name__ == "__main__":
     num = [1, 2, 3]
     result = Solution().sortedArrayToBST(num)
