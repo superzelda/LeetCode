@@ -14,6 +14,31 @@
 # "(1+(4+5+2)-3)+(6+8)" = 23
 #
 
+class Solution(object):
+    def calculate(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        res, num, sign, stack = 0, 0, 1, []
+        for ss in s:
+            if ss.isdigit():
+                num = 10*num + int(ss)
+            elif ss in ["-", "+"]:
+                res += sign*num
+                num = 0
+                sign = 1 if ss=="+" else -1
+            elif ss == "(":
+                stack.append(res)
+                stack.append(sign)
+                sign, res = 1, 0
+            elif ss == ")":
+                res += sign*num
+                res *= stack.pop()
+                res += stack.pop()
+                num = 0
+        return res + num*sign
+
 class Solution:
     # @param {string} s
     # @return {integer}
@@ -32,10 +57,10 @@ class Solution:
                 while operators[-1] != ')':
                     self.compute(operands, operators)
                 operators.pop()
-                
+
         while operators:
             self.compute(operands, operators)
-            
+
         return operands[-1]
 
     def compute(self, operands, operators):

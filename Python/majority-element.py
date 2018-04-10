@@ -3,10 +3,25 @@
 #
 # Given an array of size n, find the majority element.
 # The majority element is the element that appears more than [n/2] times.
-# 
+#
 # You may assume that the array is non-empty and the majority element always exist in the array.
 import collections
 
+class Solution:
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count, cand = 0, 0
+        for num in nums:
+            if num == cand:
+                count += 1
+            elif count == 0:
+                cand, count = num, 1
+            else:
+                count -= 1
+        return cand
 
 class Solution:
     def majorityElement(self, nums):
@@ -15,7 +30,7 @@ class Solution:
         :rtype: int
         """
         idx, cnt = 0, 1
-        
+
         for i in xrange(1, len(nums)):
             if nums[idx] == nums[i]:
                 cnt += 1
@@ -24,7 +39,7 @@ class Solution:
                 if cnt == 0:
                     idx = i
                     cnt = 1
-        
+
         return nums[idx]
 
     def majorityElement2(self, nums):
