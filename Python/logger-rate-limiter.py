@@ -28,6 +28,14 @@ class Logger(object):
         self.__printed.add(message)
         return True
 
+class Logger:
+    def __init__(self):
+        self.ok = {}
+    def shouldPrintMessage(self, timestamp, message):
+        if timestamp < self.ok.get(message, 0):
+            return False
+        self.ok[message] = timestamp + 10
+        return True
 
 # Your Logger object will be instantiated and called as such:
 # obj = Logger()

@@ -14,7 +14,7 @@
 # Example 2:
 # Input: "LL"
 # Output: false
-    
+
 class Solution(object):
     def judgeCircle(self, moves):
         """
@@ -32,3 +32,10 @@ class Solution(object):
             elif move == 'L':
                 h -= 1
         return v == 0 and h == 0
+class Solution:
+    def judgeCircle(self, moves):
+        return moves.count('L') == moves.count('R') and moves.count('U') == moves.count('D')
+
+    def judgeCircle(self, moves):
+        c = collections.Counter(moves)
+        return c['L'] == c['R'] and c['U'] == c['D']
