@@ -22,6 +22,9 @@
 # - A, B have equal lengths in range [1, 100].
 # - A[i], B[i] are integers in range [0, 10^5].
 
+import collections
+
+
 class Solution(object):
     def anagramMappings(self, A, B):
         """
@@ -36,3 +39,19 @@ class Solution(object):
         for n in A:
             result.append(lookup[n].popleft())
         return result
+
+class Solution:
+    def anagramMappings(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+        dicB = {}
+        for i, v in enumerate(B):
+            dicB[v] = i
+
+        res = []
+        for v in A:
+            res.append(dicB[v])
+        return res
