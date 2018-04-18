@@ -34,6 +34,7 @@
 # the basic concepts of Topological Sort.
 # Topological sort could also be done via BFS.
 #
+<<<<<<< HEAD
 class Solution:
     def findOrder(self, numCourses, prerequisites):
         """
@@ -65,6 +66,11 @@ class Solution:
         if len(order) == numCourses:
             return order
         return []
+=======
+
+import collections
+
+>>>>>>> 5efab83f5470530a2029f4839530ae1535bf1f22
 
 class Solution(object):
     def findOrder(self, numCourses, prerequisites):
